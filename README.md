@@ -7,6 +7,12 @@ Login
 
 ![login](https://user-images.githubusercontent.com/6822635/50509283-4c760880-0aab-11e9-83d2-660127267fa5.png)
 
+Display
+
+
+![display](https://user-images.githubusercontent.com/6822635/50509569-6e23bf80-0aac-11e9-96b5-f24dd1bc74c8.png)
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
