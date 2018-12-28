@@ -17,6 +17,11 @@ Edit
 
 ![studentcreate](https://user-images.githubusercontent.com/6822635/50509609-96132300-0aac-11e9-990f-f1bec66fce3d.png)
 
+Logout
+
+![logout](https://user-images.githubusercontent.com/6822635/50509638-b3e08800-0aac-11e9-9a41-aaf60004c115.png)
+
+
 
 ## Development server
 
