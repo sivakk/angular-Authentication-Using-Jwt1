@@ -1,0 +1,70 @@
+<mat-card>
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="StudentId">
+        <th mat-header-cell *matHeaderCellDef> StudentId </th>
+        <td mat-cell *matCellDef="let Student"> {{Student.StudentId}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="StudentName">
+        <th mat-header-cell *matHeaderCellDef> StudentName</th>
+        <td mat-cell *matCellDef="let Student"> {{Student.StudentName}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="Email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let Student"> {{Student.Email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Class">
+        <th mat-header-cell *matHeaderCellDef> Class </th>
+        <td mat-cell *matCellDef="let Student"> {{Student.Class}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="EnrollementYear">
+        <th mat-header-cell *matHeaderCellDef> EnrollementYear </th>
+        <td mat-cell *matCellDef="let Student"> {{Student.EnrollementYear | date}} </td>
+      </ng-container>
+      <ng-container matColumnDef="City">
+        <th mat-header-cell *matHeaderCellDef> City </th>
+        <td mat-cell *matCellDef="let Student"> {{Student.City}} </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Country">
+        <th mat-header-cell *matHeaderCellDef> Country</th>
+        <td mat-cell *matCellDef="let Student"> {{Student.Country}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action</th>
+        <mat-cell *matCellDef="let Student">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="editBtnHandler(Student._id)">
+              <mat-icon>edit</mat-icon>
+              <span>Edit</span>
+            </button>
+            <button mat-menu-item (click)="deleteBtnHandler(Student._id)">
+              <mat-icon>delete</mat-icon>
+              <span>Delete</span>
+            </button>
+          </mat-menu>
+        </mat-cell>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</mat-card>

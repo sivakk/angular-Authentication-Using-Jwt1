@@ -1,0 +1,113 @@
+<mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form [formGroup]="validationForm" name="validationForm" (submit)="onSubmit()" #formDir="ngForm" *ngIf="!isLoading">
+
+        <mat-form-field>
+            <input matInput type="text" formControlName="username" placeholder="name">
+            <mat-icon matSuffix>account_circle
+            </mat-icon>
+            <br>
+            <div *ngIf="username.touched && username.invalid">
+                <mat-error *ngIf="username.errors.required">Username required</mat-error>
+                <mat-error *ngIf="username.errors.minlength">minimum
+                    length of {{username.errors.minlength.requiredLength}}</mat-error>
+                <mat-error *ngIf="username.errors.cannotContainSpace">username
+                    cannot contain spaces</mat-error>
+            </div>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" formControlName="middlename" placeholder="middlename">
+            <mat-icon matSuffix>account_circle
+            </mat-icon>
+            <br>
+            <div *ngIf="middlename.touched ">
+                <div *ngIf="middlename.invalid">
+                    <mat-error *ngIf="middlename.errors.required">Username required</mat-error>
+                    <mat-error *ngIf="middlename.errors.minlength">minimum
+                        length of {{middlename.errors.minlength.requiredLength}}</mat-error>
+
+
+                    <mat-error *ngIf="middlename.errors.cannotContainSpace2">lastname
+                        cannot contain spaces</mat-error>
+                </div>
+            </div>
+
+
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" formControlName="lastname" placeholder="lastname">
+            <mat-icon matSuffix>account_circle
+            </mat-icon>
+            <br>
+            <div *ngIf="lastname.touched && lastname.invalid">
+                <mat-error *ngIf="lastname.errors.required">Lastname required</mat-error>
+                <mat-error *ngIf="lastname.errors.minlength">minimum
+                    length of {{lastname.errors.minlength.requiredLength}}</mat-error>
+
+
+                <mat-error *ngIf="lastname.errors.cannotContainSpace1">lastname
+                    cannot contain spaces</mat-error>
+            </div>
+
+
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" formControlName="phoneNumber" placeholder="phoneNumber">
+
+            <mat-icon matSuffix>phone</mat-icon>
+            <div *ngIf="phoneNumber.touched && phoneNumber.invalid">
+                <mat-error *ngIf="phoneNumber.errors.invalidNumber">Cannot contain words</mat-error>
+                <mat-error *ngIf=" phoneNumber.errors.maxlength || phoneNumber.errors.minlength ">minimumlength is 10</mat-error>
+
+
+            </div>
+
+
+
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="email" formControlName="email" placeholder="email">
+            <mat-icon matSuffix>email</mat-icon>
+            <br>
+            <div *ngIf="email.errors && email.touched">
+                <mat-error *ngIf="email.errors.required">Email required</mat-error>
+                <mat-error *ngIf="email.errors.email">Email must be valid</mat-error>
+
+            </div>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput name="password" placeholder="Password" [type]="hide ? 'text' : 'password'" formControlName="password"
+                required>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="password.invalid && (password.dirty || password.touched || isSubmit)">
+                <span *ngIf="password.errors.required">
+                    Please enter a Password.
+                </span>
+                <span *ngIf="password.errors.maxlength">
+                    Please enter a password no more than 16 characters.
+                </span>
+                <span *ngIf="password.errors.minlength">
+                    Please enter a password at least 6 characters.
+                </span>
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput name="password" placeholder="Confirm Password" [type]="confirm_hide ? 'text' : 'password'"
+                formControlName="confirm_password" required>
+            <mat-icon matSuffix (click)="confirm_hide = !confirm_hide">{{confirm_hide ? 'visibility_off' :
+                'visibility'}}</mat-icon>
+            <div *ngIf=" confirm_password.dirty || confirm_password.touched ">
+                <span *ngIf="(confirm_password.errors || validationForm.errors?.mismatch)">
+
+                    Password doesn't match
+
+                </span>
+            </div>
+        </mat-form-field>
+        <br>
+
+        <button mat-raised-button color="accent" type="submit" class="btn btn-primary" style="margin-top: 20px  " *ngIf="!isLoading">Save</button>
+
+    </form>
+</mat-card>

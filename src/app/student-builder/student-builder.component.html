@@ -1,0 +1,42 @@
+<mat-card>
+    <h3>Create Student</h3>
+    {{this.studentForm.value | json}}
+    <form class="form-container" [formGroup]="studentForm" novalidate (ngSubmit)="onSubmit()">
+      <mat-form-field color="accent"  >
+        <input matInput placeholder="StudentId" formControlName="StudentId">
+        <mat-error *ngIf="studentForm.controls.StudentId.invalid && studentForm.controls.StudentId.touched">id is required</mat-error>
+      </mat-form-field>
+     
+      <mat-form-field color="accent">
+        <input matInput placeholder="StudentName"  formControlName="StudentName">
+        <mat-error *ngIf="studentForm.controls.StudentName.invalid && studentForm.controls.StudentName.touched"> StudentName is required</mat-error>
+      </mat-form-field>
+      <mat-form-field color="accent">
+        <input matInput placeholder="Email" type="email" formControlName="Email">
+        <mat-error *ngIf="studentForm.controls.Email.invalid && studentForm.controls.Email.touched">Email is required</mat-error>
+      </mat-form-field>
+      <mat-form-field color="accent">
+          <input matInput placeholder="Class" type="number" formControlName="Class">
+          <mat-error *ngIf="studentForm.controls.Class.invalid && studentForm.controls.Class.touched"> Class is required</mat-error>
+        </mat-form-field>
+      <mat-form-field color="accent">
+          <input matInput [matDatepicker]="date" placeholder="Choose a date" formControlName="EnrollementYear">
+          <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+          <mat-datepicker #date></mat-datepicker>
+          <mat-error *ngIf="studentForm.controls.EnrollementYear.invalid && studentForm.controls.EnrollementYear.touched"> date is required</mat-error>
+        </mat-form-field>
+     
+      <mat-form-field color="accent"  >
+          <input matInput placeholder="City" formControlName="City">
+          <mat-error *ngIf="studentForm.controls.City.invalid && studentForm.controls.City.touched">City id is required</mat-error>
+        </mat-form-field>
+        <mat-form-field color="accent"  >
+            <input matInput placeholder="Country" formControlName="Country">
+            <mat-error *ngIf="studentForm.controls.Country.invalid && studentForm.controls.Country.touched">Country is required</mat-error>
+          </mat-form-field>
+    
+        <button mat-raised-button [disabled]="!studentForm.valid" type="submit" color="accent">Save</button>
+        <button mat-raised-button type="reset">Cancel</button>
+      
+    </form>
+  </mat-card>
