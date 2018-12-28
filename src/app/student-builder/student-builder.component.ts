@@ -36,7 +36,7 @@ export class StudentBuilderComponent implements OnInit {
           this.snackBar.open('Student updated', 'Success', {
             duration: 2000
           });
-        //  this.router.navigate(['dashboard', 'students']);
+          this.router.navigate(["/list"]);
         }, err => this.errorHandler(err, 'Failed to update student'));
     }
     else {
@@ -46,7 +46,7 @@ export class StudentBuilderComponent implements OnInit {
             duration: 2000
           });
           this.studentForm.reset();
-         this.router.navigate(['list']);
+          this.router.navigate(["/list"]);
         },
         err => this.errorHandler(err, 'Failed to create Student')
       );

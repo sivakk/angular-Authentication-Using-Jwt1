@@ -1,5 +1,5 @@
 <mat-card>
-    <h3>Create Student</h3>
+    <h3>Student Form</h3>
     {{this.studentForm.value | json}}
     <form class="form-container" [formGroup]="studentForm" novalidate (ngSubmit)="onSubmit()">
       <mat-form-field color="accent"  >
@@ -20,7 +20,7 @@
           <mat-error *ngIf="studentForm.controls.Class.invalid && studentForm.controls.Class.touched"> Class is required</mat-error>
         </mat-form-field>
       <mat-form-field color="accent">
-          <input matInput [matDatepicker]="date" placeholder="Choose a date" formControlName="EnrollementYear">
+          <input matInput [matDatepicker]="date" placeholder="Choose Educational Year" formControlName="EnrollementYear">
           <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
           <mat-datepicker #date></mat-datepicker>
           <mat-error *ngIf="studentForm.controls.EnrollementYear.invalid && studentForm.controls.EnrollementYear.touched"> date is required</mat-error>
